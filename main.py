@@ -4,12 +4,14 @@ st.set_page_config(layout="wide")
 
 st.title("Weather Forecast for the Next Days")
 
-city = st.text_input("Place")
+place = st.text_input("Place")
 
-forecast_days = st.select_slider("Forecast Days", range(1, 6))
+days = st.slider("Forecast Days", min_value=1, max_value=5,
+                          help="Select the number of forecasted days")
 
-data_to_view = st.selectbox("Select data to view")
+option = st.selectbox("Select data to view",
+                            ("Temperature", "Sky"))
 
-st.header(f"Temperature for the next {forecast_days} day(s) in {city}")
+st.subheader(f"{option} for the next {days} day(s) in {place}")
 
 chart = st.plotly_chart()
